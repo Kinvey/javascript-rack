@@ -1,4 +1,5 @@
 import { Middleware } from './middleware';
+import regeneratorRuntime from 'regenerator-runtime'; // eslint-disable-line no-unused-vars
 import findIndex from 'lodash/findIndex';
 import reduce from 'lodash/reduce';
 

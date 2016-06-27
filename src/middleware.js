@@ -1,4 +1,5 @@
 import { AsciiTree } from './asciiTree';
+import regeneratorRuntime from 'regenerator-runtime'; // eslint-disable-line no-unused-vars
 
 export class Middleware {
   constructor(name = 'Middleware') {
