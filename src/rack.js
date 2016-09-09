@@ -106,8 +106,17 @@ export class Rack extends Middleware {
     }
 
     return reduce(this.middlewares,
-                  (promise, middleware) => promise.then(request => middleware.handle(request)),
-                  Promise.resolve(request));
+      (promise, middleware) => {
+        promise = promise.then(({ req, response }) => {
+          if (!req) {
+            req = request;
+          }
+
+          return middleware.handle(req, response);
+        });
+        return promise;
+      },
+      Promise.resolve({ request: request, response: undefined }));
   }
 
   cancel() {

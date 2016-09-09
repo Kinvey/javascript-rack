@@ -1,4 +1,4 @@
-import { AsciiTree } from './asciiTree';
+import { AsciiTree } from './asciitree';
 import regeneratorRuntime from 'regenerator-runtime'; // eslint-disable-line no-unused-vars
 
 export class Middleware {
@@ -6,12 +6,8 @@ export class Middleware {
     this.name = name;
   }
 
-  async handle(request) {
-    if (!request) {
-      throw new Error('Request is null. Please provide a valid request.');
-    }
-
-    return request;
+  async handle() {
+    throw new Error('A subclass middleware must override the handle function.');
   }
 
   generateTree(level = 0) {

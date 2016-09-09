@@ -1,15 +1,19 @@
 {
   "name": "kinvey-javascript-rack",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Kinvey Rack",
-  "main": "./src/rack.js",
+  "main": "./dist/export.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register -r babel-polyfill -s 100 --recursive test",
-    "lint": "./node_modules/.bin/eslint \"src/**\""
+    "build": "gulp build",
+    "clean": "gulp clean",
+    "lint": "gulp lint",
+    "test": "npm run test:unit",
+    "test:unit": "mocha --compilers js:babel-core/register -r babel-polyfill -s 100 --recursive test/unit/setup test/unit",
+    "test:unit:watch": "mocha -w --compilers js:babel-core/register -r babel-polyfill -s 100 --recursive test/unit/setup test/unit"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ThomasConner/javascript-rack.git"
+    "url": "https://github.com/Kinvey/javascript-rack.git"
   },
   "author": "Kinvey, Inc.",
   "contributors": [
@@ -17,14 +21,13 @@
   ],
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/ThomasConner/javascript-rack/issues"
+    "url": "https://github.com/Kinvey/javascript-rack/issues"
   },
   "dependencies": {
+    "es6-promise": "^3.2.1",
+    "fast-memory-cache": "^2.0.4",
     "lodash": "^4.12.0",
-    "regenerator-runtime": "^0.9.5"
-  },
-  "peerDependencies": {
-    "lodash": "^4.12.0",
+    "parse-headers": "^2.0.1",
     "regenerator-runtime": "^0.9.5"
   },
   "devDependencies": {
@@ -43,6 +46,7 @@
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-bump": "^2.1.0",
+    "gulp-env": "^0.4.0",
     "gulp-eslint": "^2.0.0",
     "gulp-tag-version": "^1.3.0",
     "gulp-util": "^3.0.7",
