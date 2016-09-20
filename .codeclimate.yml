@@ -1,4 +1,4 @@
-engines:
+traengines:
   eslint:
     enabled: true
     channel: "eslint-3"
