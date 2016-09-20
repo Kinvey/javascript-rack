@@ -160,33 +160,39 @@ var Rack = exports.Rack = function (_Middleware) {
     key: 'execute',
     value: function () {
       var ref = _asyncToGenerator(_regeneratorRuntime2.default.mark(function _callee(request) {
+        var req;
         return _regeneratorRuntime2.default.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
+                req = request;
+
                 if (request) {
-                  _context.next = 2;
+                  _context.next = 3;
                   break;
                 }
 
                 throw new Error('Request is null. Please provide a valid request.');
 
-              case 2:
-                return _context.abrupt('return', (0, _reduce2.default)(this.middlewares, function (promise, middleware) {
-                  promise = promise.then(function (_ref) {
-                    var req = _ref.req;
-                    var response = _ref.response;
-
-                    if (!req) {
-                      req = request;
-                    }
-
-                    return middleware.handle(req, response);
-                  });
-                  return promise;
-                }, Promise.resolve({ request: request, response: undefined })));
-
               case 3:
+                return _context.abrupt('return', (0, _reduce2.default)(this.middlewares, function (promise, middleware) {
+                  if (promise) {
+                    return promise.then(function (_ref) {
+                      var request = _ref.request;
+                      var response = _ref.response;
+
+                      if (!request) {
+                        request = req;
+                      }
+
+                      return middleware.handle(request, response);
+                    });
+                  }
+
+                  return middleware.handle(request);
+                }, null));
+
+              case 4:
               case 'end':
                 return _context.stop();
             }

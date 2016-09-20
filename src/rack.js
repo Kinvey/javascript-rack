@@ -101,22 +101,26 @@ export class Rack extends Middleware {
   }
 
   async execute(request) {
+    const req = request;
+
     if (!request) {
       throw new Error('Request is null. Please provide a valid request.');
     }
 
     return reduce(this.middlewares,
       (promise, middleware) => {
-        promise = promise.then(({ req, response }) => {
-          if (!req) {
-            req = request;
-          }
+        if (promise) {
+          return promise.then(({ request, response }) => {
+            if (!request) {
+              request = req;
+            }
 
-          return middleware.handle(req, response);
-        });
-        return promise;
-      },
-      Promise.resolve({ request: request, response: undefined }));
+            return middleware.handle(request, response);
+          });
+        }
+
+        return middleware.handle(request);
+      }, null);
   }
 
   cancel() {

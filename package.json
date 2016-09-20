@@ -1,15 +1,19 @@
 {
   "name": "kinvey-javascript-rack",
   "version": "1.0.1",
-  "description": "Kinvey Rack",
+  "description": "Kinvey JavaScript Rack",
   "main": "./dist/export.js",
   "scripts": {
-    "build": "gulp build",
-    "clean": "gulp clean",
-    "lint": "gulp lint",
-    "test": "npm run test:unit",
-    "test:unit": "mocha --compilers js:babel-core/register -r babel-polyfill -s 100 --recursive test/unit/setup test/unit",
-    "test:unit:watch": "mocha -w --compilers js:babel-core/register -r babel-polyfill -s 100 --recursive test/unit/setup test/unit"
+    "build": "npm run clean && babel src --out-dir dist",
+    "clean": "del dist coverage",
+    "cover": "istanbul cover _mocha -- --compilers js:babel-core/register -r babel-polyfill -s 100 --recursive test/unit/setup test/unit",
+    "docs": "esdoc -c esdoc.json",
+    "lint": "npm run lint:src",
+    "lint:src": "eslint src/**",
+    "lint:test": "eslint test/unit/**",
+    "postinstall": "npm run build",
+    "test": "mocha --compilers js:babel-core/register -r babel-polyfill -s 100 --recursive test/unit/setup test/unit",
+    "test:watch": "mocha -w --compilers js:babel-core/register -r babel-polyfill -s 100 --recursive test/unit/setup test/unit"
   },
   "repository": {
     "type": "git",
@@ -24,33 +28,25 @@
     "url": "https://github.com/Kinvey/javascript-rack/issues"
   },
   "dependencies": {
-    "es6-promise": "^3.2.1",
-    "fast-memory-cache": "^2.0.4",
+    "babel-cli": "^6.14.0",
+    "babel-core": "^6.13.2",
+    "babel-eslint": "^6.1.0",
+    "babel-plugin-inline-dotenv": "^1.1.1",
+    "babel-polyfill": "^6.9.1",
+    "babel-preset-es2015": "^6.13.2",
+    "babel-preset-stage-2": "^6.5.0",
+    "del-cli": "^0.2.0",
     "lodash": "^4.12.0",
-    "parse-headers": "^2.0.1",
     "regenerator-runtime": "^0.9.5"
   },
   "devDependencies": {
-    "babel-core": "^6.9.1",
-    "babel-eslint": "^6.0.5",
-    "babel-polyfill": "^6.9.1",
-    "babel-preset-es2015": "^6.9.0",
-    "babel-preset-stage-2": "^6.5.0",
-    "chai": "^3.5.0",
-    "del": "^2.2.1",
-    "eslint": "^2.12.0",
-    "eslint-config-airbnb": "^9.0.1",
+    "esdoc": "^0.4.7",
+    "esdoc-es7-plugin": "0.0.3",
+    "eslint": "^3.5.0",
+    "eslint-config-airbnb-base": "^7.1.0",
     "eslint-plugin-import": "^1.9.2",
-    "eslint-plugin-jsx-a11y": "^1.5.3",
-    "eslint-plugin-react": "^5.2.2",
-    "gulp": "^3.9.1",
-    "gulp-babel": "^6.1.2",
-    "gulp-bump": "^2.1.0",
-    "gulp-env": "^0.4.0",
-    "gulp-eslint": "^2.0.0",
-    "gulp-tag-version": "^1.3.0",
-    "gulp-util": "^3.0.7",
-    "mocha": "^2.5.3",
-    "yargs": "^4.7.1"
+    "expect": "^1.20.2",
+    "istanbul": "^1.0.0-alpha.2",
+    "mocha": "^2.5.3"
   }
 }
