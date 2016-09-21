@@ -1,6 +1,6 @@
 {
   "name": "kinvey-javascript-rack",
-  "version": "1.1.0",
+  "version": "1.0.1",
   "description": "Kinvey JavaScript Rack",
   "main": "./dist/export.js",
   "scripts": {
