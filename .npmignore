@@ -15,7 +15,7 @@ npm-debug.log
 .travis.yml
 CHANGELOG.md
 CONTRIBUTING.md
-/dist
+/src
 /docs
 /manual
 esdoc.json
