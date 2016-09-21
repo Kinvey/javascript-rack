@@ -15,7 +15,7 @@
     "test:watch": "mocha -w --compilers js:babel-core/register -r babel-polyfill -s 100 --recursive test/unit/setup test/unit",
     "preversion": "npm test",
     "version": "npm run build && git add -A dist",
-    "postversion": "git push && git push --tags && npm run clean"
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
