@@ -12,7 +12,7 @@ function compose(node, end) {
   let ret = '\r\n';
   const c = end ? c2 : c0;
 
-  for (let i = 1; i < node.level; i++) {
+  for (let i = 1; i < node.level; i += 1) {
     ret = `${ret}${levels[i] ? ' ' : c3}`;
     ret = `${ret}  `;
   }
@@ -28,7 +28,7 @@ export const AsciiTree = {
       const last = tree.nodes.length - 1;
       tree.nodes.forEach((subTree, index) => {
         levels[subTree.level] = index === last;
-        result = result + this.generate(subTree, index === last);
+        result += this.generate(subTree, index === last);
       });
     }
 
