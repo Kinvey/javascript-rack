@@ -5,7 +5,7 @@
 
 **Implemented enhancements:**
 
-- Added files to integrate [TravisCI](https://travis-ci.org/Kinvey/javascript-sdk-core), [CodeClimate](https://codeclimate.com/github/Kinvey/javascript-rack), and [CodeCov](https://codecov.io/gh/Kinvey/javascript-rack).
+- Added files to integrate [TravisCI](https://travis-ci.org/Kinvey/javascript-rack), [CodeClimate](https://codeclimate.com/github/Kinvey/javascript-rack), and [CodeCov](https://codecov.io/gh/Kinvey/javascript-rack).
 
 **Fixed bugs:**
 

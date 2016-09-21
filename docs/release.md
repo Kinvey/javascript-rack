@@ -1,5 +1,4 @@
 ### Release
-
 1. Checkout the master branch.
 2. Update the CHANGELOG.md.
 3. Execute `npm version [<newversion> | major | minor | patch | premajor | preminor | prepatch | prerelease | from-git]`. See [Version Management](#version-management) for more info on incrementing the version.

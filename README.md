@@ -1,4 +1,4 @@
-# Kinvey JavaScript Rack [![Build Status](https://travis-ci.org/Kinvey/javascript-rack.svg?branch=master)](https://travis-ci.org/Kinvey/javascript-sdk-core) [![Code Climate](https://codeclimate.com/github/Kinvey/javascript-rack/badges/gpa.svg)](https://codeclimate.com/github/Kinvey/javascript-rack) [![codecov](https://codecov.io/gh/Kinvey/javascript-rack/branch/master/graph/badge.svg)](https://codecov.io/gh/Kinvey/javascript-rack)
+# Kinvey JavaScript Rack [![Build Status](https://travis-ci.org/Kinvey/javascript-rack.svg?branch=master)](https://travis-ci.org/Kinvey/javascript-rack) [![Code Climate](https://codeclimate.com/github/Kinvey/javascript-rack/badges/gpa.svg)](https://codeclimate.com/github/Kinvey/javascript-rack) [![codecov](https://codecov.io/gh/Kinvey/javascript-rack/branch/master/graph/badge.svg)](https://codecov.io/gh/Kinvey/javascript-rack)
 The Kinvey JavaScript Rack provides a minimal, modular, and adaptable interface for developing shims for the Kinvey JavaScript SDK.
 
 ## License
