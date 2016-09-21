@@ -13,11 +13,11 @@ Execute `npm run build` to build the SDK.
 4. Done.
 
 ### Version Management
-Updating the SDK version should follow [Semantic Version 2.0.0](http://semver.org/):
+Updating the package version should follow [Semantic Version 2.0.0](http://semver.org/):
 
 * Major (x.0.0): when making an incompatible API changes.
-* Minor (3.x.0): when adding functionality in a backwards-compatible manner.
-* Patch (3.0.x): when making backwards-compatible bug fixes or enhancements.
+* Minor (1.x.0): when adding functionality in a backwards-compatible manner.
+* Patch (1.0.x): when making backwards-compatible bug fixes or enhancements.
 
 ## Test
 Execute `npm test` to run the unit tests for the SDK.
