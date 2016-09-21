@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-- '6'
+  - '6'
 addons:
   code_climate:
     repo_token:
@@ -17,5 +17,5 @@ notifications:
   slack:
     secure: LWp02M7+wUC0UiDpfpUXCtjAhPvcfUESI0JnY87IznQzsxnHXPYQbhUZifYxPOV8HuPycleaR4hSf+J9nBjFlYmee5MTrp6pKbS7M0fODmgDWMEz0wSlt2/pWnShSgX8rEhAopdcmEPgYIXDuATmFYGVesDeimnIrarQPeqa30V50thcuq46sSQyMTBd7z+v5KsknKAe0M9hYaZASpd6cIjo8yig5HwnzpHls/wVdicamJ+Q57v4FpqtwRt6H4CRyH6Aq4soMaFS7p+XbYnjcgqnUaGf7xVxHo7GCECWbIvSLewZTQrOTlR+HR4ghJWklYnZg+CJ5FPxR6kb6BdDUw2KhbVa9Y85gQElEFuOxN/isp7zzCBu+Av7f7E5Uif2qmSu68xS0mIHTyV8e9howVqgxcQqmvANSvh2oh0KZVh8ZpB8eO+H1EkSNgIxHC3kAQ9SPUyrY6PKQFDbiOa6D06l3lX71z5yT620uSvNxY+h9NdDKAoDdQK6L6Yb6OKvDcgHa4Kua+d4wOXpkqzAo5WzR667YP/bLYMAP89Vheulau5kBiy2HIugeHq9Iz+4JDT+esG0rqJPRSHT8NuhAEVZ3iv8/xYTcDNr03nIPVlegVbpElpPiYLEexsV9WwMmoyGKhfNm/KdqCyRfqeLIA54so2IldU7wk3NnjKFQRs=
 script: npm run cover
-after_script:
-- codeclimate-test-reporter < coverage/lcov.info
+after_success:
+  - bash <(curl -s https://codecov.io/bash)

@@ -11,4 +11,3 @@ traengines:
 ratings:
   paths:
   - src/**
-  - test/**

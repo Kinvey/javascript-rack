@@ -4,15 +4,20 @@ node_modules
 npm-debug.log
 
 # Src files
+/.github
 .babelrc
+.codeclimate.yml
 .editorconfig
+.eslintignore
 .eslintrc
 .gitattributes
 .gitignore
-.nvmrc
-src
-docs
-manual
+.travis.yml
+CHANGELOG.md
+CONTRIBUTING.md
+/dist
+/docs
+/manual
 esdoc.json
 gulpfile.babel.js
 hints.md
@@ -21,14 +26,15 @@ README.md
 
 # Build Files
 .env
-.tmp
-tmp
+/.tmp
+/tmp
 
 # Test Files
-coverage
+/coverage
 report.xml
 *.tap
-test
+/test
+/test2
 
 # MacOS Files
 .DS_Store
