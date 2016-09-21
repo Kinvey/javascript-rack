@@ -20,8 +20,8 @@ function compose(node, end) {
   return `${ret}${c}${c1} ${node.value}`;
 }
 
-export const AsciiTree = {
-  generate(tree = {}, end) {
+export class AsciiTree {
+  static generate(tree = {}, end) {
     let result = compose(tree, end);
 
     if (tree.nodes.length > 0) {
@@ -34,4 +34,4 @@ export const AsciiTree = {
 
     return result;
   }
-};
+}
