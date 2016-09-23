@@ -3,11 +3,9 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Middleware = undefined;
+exports.$Http = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _asciitree = require('./asciitree');
 
 var _regeneratorRuntime = require('regenerator-runtime');
 
@@ -20,59 +18,83 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 // eslint-disable-line no-unused-vars
+var angular = void 0;
+var $http = void 0;
 
-var Middleware = exports.Middleware = function () {
-  function Middleware() {
-    var name = arguments.length <= 0 || arguments[0] === undefined ? 'Middleware' : arguments[0];
+if (typeof window !== 'undefined' && typeof global.angular !== 'undefined') {
+  angular = global.angular;
+  var $injector = angular.injector(['ng']);
+  $http = $injector.get('$http');
+}
 
-    _classCallCheck(this, Middleware);
-
-    this.name = name;
+var $Http = exports.$Http = function () {
+  function $Http() {
+    _classCallCheck(this, $Http);
   }
 
-  _createClass(Middleware, [{
+  _createClass($Http, [{
     key: 'handle',
     value: function () {
-      var _ref = _asyncToGenerator(_regeneratorRuntime2.default.mark(function _callee() {
+      var _ref = _asyncToGenerator(_regeneratorRuntime2.default.mark(function _callee(request) {
+        var url, method, headers, body, response;
         return _regeneratorRuntime2.default.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                throw new Error('A subclass middleware must override the handle function.');
+                url = request.url;
+                method = request.method;
+                headers = request.headers;
+                body = request.body;
+                _context.prev = 4;
+                _context.next = 7;
+                return $http({
+                  url: url,
+                  method: method,
+                  headers: headers,
+                  data: body
+                });
 
-              case 1:
+              case 7:
+                response = _context.sent;
+                return _context.abrupt('return', {
+                  response: {
+                    statusCode: response.status,
+                    headers: response.headers(),
+                    data: response.data
+                  }
+                });
+
+              case 11:
+                _context.prev = 11;
+                _context.t0 = _context['catch'](4);
+                return _context.abrupt('return', {
+                  response: {
+                    statusCode: _context.t0.status,
+                    headers: _context.t0.headers(),
+                    data: _context.t0.data
+                  }
+                });
+
+              case 14:
               case 'end':
                 return _context.stop();
             }
           }
-        }, _callee, this);
+        }, _callee, this, [[4, 11]]);
       }));
 
-      function handle() {
+      function handle(_x) {
         return _ref.apply(this, arguments);
       }
 
       return handle;
     }()
-  }, {
-    key: 'generateTree',
-    value: function generateTree() {
-      var level = arguments.length <= 0 || arguments[0] === undefined ? 0 : arguments[0];
-
-      var root = {
-        value: this.name,
-        level: level,
-        nodes: []
-      };
-      return root;
-    }
-  }, {
-    key: 'toString',
-    value: function toString() {
-      var root = this.generateTree();
-      return _asciitree.AsciiTree.generate(root);
+  }], [{
+    key: 'isSupported',
+    value: function isSupported() {
+      return !!angular;
     }
   }]);
 
-  return Middleware;
+  return $Http;
 }();
