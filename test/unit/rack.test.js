@@ -1,5 +1,5 @@
-import { Rack } from '../../src/rack';
-import { Middleware } from '../../src/middleware';
+import Rack from '../../src/rack';
+import Middleware from '../../src/middleware';
 import expect from 'expect';
 
 describe('Rack', function () {
