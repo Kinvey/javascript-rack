@@ -1,7 +1,7 @@
-import { AsciiTree } from './asciitree';
+import { AsciiTree } from '../../asciitree';
 import regeneratorRuntime from 'regenerator-runtime'; // eslint-disable-line no-unused-vars
 
-export class Middleware {
+export default class Middleware {
   constructor(name = 'Middleware') {
     this.name = name;
   }

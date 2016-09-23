@@ -1,9 +1,9 @@
-import { Middleware } from './middleware';
+import Middleware, { CacheMiddleware, HttpMiddleware, ParseMiddleware, SerializeMiddleware } from './middleware';
 import regeneratorRuntime from 'regenerator-runtime'; // eslint-disable-line no-unused-vars
 import findIndex from 'lodash/findIndex';
 import reduce from 'lodash/reduce';
 
-export class Rack extends Middleware {
+export default class Rack extends Middleware {
   constructor(name = 'Rack') {
     super(name);
     this.middlewares = [];
@@ -100,27 +100,15 @@ export class Rack extends Middleware {
     this.middlewares = [];
   }
 
-  async execute(request) {
-    const req = request;
-
-    if (!request) {
-      throw new Error('Request is null. Please provide a valid request.');
+  async execute(req) {
+    if (!req) {
+      throw new Error('Request is undefined. Please provide a valid request.');
     }
 
-    return reduce(this.middlewares,
-      (promise, middleware) => {
-        if (promise) {
-          return promise.then(({ request, response }) => {
-            if (!request) {
-              request = req;
-            }
-
-            return middleware.handle(request, response);
-          });
-        }
-
-        return middleware.handle(request);
-      }, null);
+    const { response } = await reduce(this.middlewares,
+      (promise, middleware) => promise.then(({ request, response }) => middleware.handle(request || req, response)),
+      Promise.resolve({ request: req }));
+    return response;
   }
 
   cancel() {
@@ -140,5 +128,21 @@ export class Rack extends Middleware {
     });
 
     return root;
+  }
+}
+
+export class CacheRack extends Rack {
+  constructor(name = 'Cache Rack') {
+    super(name);
+    this.use(new CacheMiddleware());
+  }
+}
+
+export class NetworkRack extends Rack {
+  constructor(name = 'Network Rack') {
+    super(name);
+    this.use(new SerializeMiddleware());
+    this.use(new HttpMiddleware());
+    this.use(new ParseMiddleware());
   }
 }
