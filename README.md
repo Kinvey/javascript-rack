@@ -1,3 +1,3 @@
 # Kinvey JavaScript Rack
 
-DEPRECATED: Please see [kinvey-node-sdk](https://github.com/Kinvey/kinvey-nodejs).
+MOVED: Please use [js-sdk](https://github.com/Kinvey/js-sdk).
